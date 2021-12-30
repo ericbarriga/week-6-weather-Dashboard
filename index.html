@@ -28,7 +28,7 @@
     <div class="columns  ">
         <div class="column is-one-third ">
             <div class='notification is-info'>
-                <h1 class=''>search for a city:</h1>
+                <h1 class='city'>search for a city:</h1>
                 <input class="input is-medium " type="text" placeholder="denver">
 
                 <button class="button  is-medium is-fullwidth">search</button>
@@ -36,13 +36,14 @@
         </div>
         <div class="column  ">
             <div class='notification is-warning'>
-                <h1>city/date</h1>
+                <!--- <h1 class='city'>city/date</h1> --->
 
                 <ul>
-                    <li>temp</li>
-                    <li>wind</li>
-                    <li>humidity</li>
-                    <li>uv</li>
+                    <li class="cityName">city</li>
+                    <li class="temp">temp</li>
+                    <li class='wind'>wind</li>
+                    <li class='humidity'>humidity</li>
+                    <li class='uv'>uv</li>
                 </ul>
             </div>
         </div>
@@ -94,7 +95,7 @@
 
 
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
     <script src="javascrip.js"></script>
 </body>
 
