@@ -9,7 +9,7 @@ let m = moment().format('MM-DD-YYYY')
 let forcastContainer = document.querySelector('#forcast')
 //console.log(m);
 
-const endpoint = 'http://api.openweathermap.org/data/2.5/weather'
+const endpoint = 'https://api.openweathermap.org/data/2.5/weather'
 const forcastEndpoint = 'https://api.openweathermap.org/data/2.5/onecall'
 
 function currentWeather(cityName) {
