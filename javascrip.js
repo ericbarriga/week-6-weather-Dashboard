@@ -18,23 +18,28 @@ function currentWeather(cityName) {
         .then(blob => blob.json())
         .then(city => {
 
-            //console.log(city);
+            // console.log(city);
             fillcurrentWeather(city)
             forecast(city.coord.lat, city.coord.lon)
+
         })
 }
+
+
 
 function fillcurrentWeather(data) {
     let tempValue = data['main']['temp'];
     let windValue = data['wind']['speed'];
     let humidityValue = data['main']['humidity']
     let nameValue = data['name']
-
+    // console.log(data);
 
     temp.innerHTML = `temp: ${tempValue}`;
     wind.innerHTML = ` wind: ${windValue}`;
     humidity.innerHTML = `humidity: ${humidityValue}%`;
     cityName.innerHTML = nameValue + ` ` + m;
+
+
 }
 
 function forecast(lat, lon) {
@@ -43,15 +48,30 @@ function forecast(lat, lon) {
         .then(blob => blob.json())
         .then(weather => {
 
-            console.log(weather);
+            // console.log(weather);
+            // console.log(weather['current']['uvi']);
+
+
+            // uv.innerHTML = `uv: ${weather['current']['uvi']}`
             fillForecast(weather)
+            getUvi(weather)
 
         })
 }
 
+/// this function adds the uvi becasue the city data doesnt provide it 
+function getUvi(weather) {
+    console.log(weather['current']['uvi']);
+
+    let uvi = weather['current']['uvi']
+
+    uv.innerHTML = `uv:${uvi}`
+}
+
 function fillForecast(data) {
     forcastContainer.innerHTML = ''
-    //  console.log(data.daily);
+    // console.log(data);
+    // console.log(data.current.uvi);
     let fiveDay = data.daily.slice(1, 6)
     //  console.log(fiveDay);
     for (let i = 0; i < fiveDay.length; i++) {
@@ -64,14 +84,18 @@ function fillForecast(data) {
         <p>low: ${day.temp.min}</p>
         <p> wind: ${day.wind_speed}</p>
         <p>humidity: ${day.humidity}</p>
-        <p>uv: ${day.uvi}</p>
+        <p>uv: ${data.current.uvi}</p>
         `
+
+
 
         forcastContainer.append(dayDiv)
         //console.log(moment(day.dt * 1000).format('dddd'));
 
     }
 }
+
+// add saved cities 
 
 currentWeather()
 
